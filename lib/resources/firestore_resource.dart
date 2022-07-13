@@ -14,7 +14,7 @@ class FirestoreMethods {
       .collection('complaints')
       .snapshots();
 
-  void addComplaintToDB(
+  void addComplaintToUserDB(
       BuildContext context, String title, String complain) async {
     try {
       await _firestore
@@ -34,11 +34,38 @@ class FirestoreMethods {
     _showToast(context);
   }
 
+  void addComplaintToAdminDB(
+      BuildContext context, String title, String complain) async {
+    try {
+      await _firestore.collection('complaints').add({
+        'title': title,
+        'complain': complain,
+        'createdAt': DateTime.now(),
+        'givenBy': _auth.currentUser!.displayName.toString(),
+      });
+    } catch (e) {
+      print(e);
+    }
+
+    _showToast2(context);
+  }
+
   void _showToast(BuildContext context) {
     final scaffold = ScaffoldMessenger.of(context);
     scaffold.showSnackBar(
       SnackBar(
         content: const Text('Complaint submitted!'),
+        action: SnackBarAction(
+            label: 'Ok', onPressed: scaffold.hideCurrentSnackBar),
+      ),
+    );
+  }
+
+  void _showToast2(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
+    scaffold.showSnackBar(
+      SnackBar(
+        content: const Text('Complaint submitted(admin))'),
         action: SnackBarAction(
             label: 'Ok', onPressed: scaffold.hideCurrentSnackBar),
       ),

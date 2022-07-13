@@ -24,6 +24,7 @@ class _MyComplaintsScreenState extends State<MyComplaintsScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: secondaryBackgroundColor,
@@ -35,24 +36,50 @@ class _MyComplaintsScreenState extends State<MyComplaintsScreen> {
                 child: CircularProgressIndicator(),
               );
             }
-            return ListView.builder(
-              itemCount: (snapshot.data! as dynamic).docs.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(
-                  'Title: ${(snapshot.data! as dynamic).docs[index]['title']}',
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  '${DateFormat.yMMMd().format((snapshot.data! as dynamic).docs[index]['createdAt'].toDate())}',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
-                ),
-                trailing: Text(
-                  '${(snapshot.data! as dynamic).docs[index]['complain']}',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
-                ),
+            return Scaffold(
+              backgroundColor: secondaryBackgroundColor,
+              body: ListView.builder(
+                itemBuilder: (context, position) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 16.0, top: 8.0, right: 16.0, bottom: 8.0),
+                        child: Column(children: [
+                          Card(
+                            color: Color.fromARGB(255, 243, 84, 72),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: 75,
+                                child: Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${(snapshot.data! as dynamic).docs[position]['title']}',
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '${(snapshot.data! as dynamic).docs[position]['complain']}',
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ]),
+                      ),
+                    ],
+                  );
+                },
+                itemCount: (snapshot.data! as dynamic).docs.length,
               ),
             );
           },

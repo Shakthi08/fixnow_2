@@ -36,7 +36,10 @@ class _NewComplaintScreenState extends State<NewComplaintScreen> {
   }
 
   submitComplaint() async {
-    _firestoreMethods.addComplaintToDB(
+    _firestoreMethods.addComplaintToUserDB(
+        context, titleController.text, complaintController.text);
+
+    _firestoreMethods.addComplaintToAdminDB(
         context, titleController.text, complaintController.text);
 
     Navigator.pop(context);
