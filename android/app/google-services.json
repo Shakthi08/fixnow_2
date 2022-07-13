@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "910322134898",
+    "project_id": "fixnoww-shakthi",
+    "storage_bucket": "fixnoww-shakthi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910322134898:android:5b2baaf9237ff0c1d977eb",
+        "android_client_info": {
+          "package_name": "com.example.fixnoww"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910322134898-498ppl2rnglkvh18ufji69much6buc52.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fixnoww",
+            "certificate_hash": "1f92cd45feca00933f9d86f0824e831b5d951fb1"
+          }
+        },
+        {
+          "client_id": "910322134898-foos0rhbcecqq6mrp8ol57oqlq7sc51u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMw5iBPsen3KCXv9jSv4Ej5iBWBIBU5i8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910322134898-foos0rhbcecqq6mrp8ol57oqlq7sc51u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
